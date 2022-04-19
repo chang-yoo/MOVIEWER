@@ -4,6 +4,7 @@ body {
   height: 100vh;
   padding: 0;
   margin: 0;
+  font-family: Voltaire, sans-serif;
 }
 
 .container {
@@ -21,8 +22,4 @@ body {
 
 .column-full {
   width: 100%;
-}
-
-.baseline {
-  align-items: baseline;
 }
