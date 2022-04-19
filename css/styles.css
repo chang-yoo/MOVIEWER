@@ -48,7 +48,8 @@ ul {
 }
 
 li {
-  margin-right: 10%;
+  flex-basis: 20%;
+  margin-right: 5%;
 }
 
 .breif-container {
@@ -67,4 +68,5 @@ p {
 
 .brief-image {
   bottom: 0;
+  object-fit: cover;
 }
