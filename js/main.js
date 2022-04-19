@@ -14,11 +14,12 @@ function comingMovie() {
       $li.append($briefCon);
 
       var $briefImg = document.createElement('div');
-      $briefImg.setAttribute('class', 'brief-image');
+      $briefImg.setAttribute('class', 'image-container');
       $briefCon.appendChild($briefImg);
 
       var $img = document.createElement('img');
       $img.setAttribute('src', items[i].image);
+      $img.setAttribute('class', 'brief-image');
       $briefImg.appendChild($img);
 
       var $briefDesc = document.createElement('div');
