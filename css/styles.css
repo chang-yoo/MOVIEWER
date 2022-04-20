@@ -91,7 +91,7 @@ a:hover {
 .detailed-image-container {
   object-fit: cover;
   width: 45%;
-  height: 783px;
+  height: 900px;
   margin-top: 1.5rem;
   margin-left: 0.5rem;
   margin-right: 2rem;
@@ -103,10 +103,9 @@ a:hover {
 
 .detailed-box {
   background-color: white;
-  height: 300px;
+  height: 270px;
   border-radius: 5px;
-  margin: 0 auto;
-  padding: 0;
+  margin: auto;
 }
 
 h4 {
