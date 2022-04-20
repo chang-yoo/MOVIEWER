@@ -21,6 +21,18 @@ body {
   display: none;
 }
 
+.column-full {
+  width: 100%;
+}
+
+.column-half {
+  width: 50%;
+}
+
+.column-one-third {
+  width: calc(100% / 3);
+}
+
 @media only screen and (max-width: 600px) {
   li {
     width: 100%;

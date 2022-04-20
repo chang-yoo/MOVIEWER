@@ -87,3 +87,33 @@ a {
 a:hover {
   cursor: pointer;
 }
+
+.detailed-image-container {
+  object-fit: cover;
+  width: 45%;
+  height: 783px;
+  margin-top: 1.5rem;
+  margin-left: 0.5rem;
+  margin-right: 2rem;
+}
+
+.margin-0 {
+  margin: 0;
+}
+
+.detailed-box {
+  background-color: white;
+  height: 300px;
+  border-radius: 5px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+h4 {
+  font-family: Voltaire, sans-serif;
+  color: #6c757d;
+}
+
+.detailed-text {
+  margin: 0 auto;
+}
