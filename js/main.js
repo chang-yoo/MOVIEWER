@@ -1,5 +1,5 @@
 function comingMovie() {
-  var $ul = document.querySelector('ul');
+  var $ul = document.querySelector('.list');
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://imdb-api.com/en/API/ComingSoon/k_4003h2lv');
   xhr.responseType = 'json';
@@ -40,11 +40,13 @@ function movieDescription(object) {
 
   var $title = document.createElement('p');
   $title.setAttribute('data-id', object.id);
+  $title.setAttribute('class', 'detailed-title');
   $title.textContent = object.title;
   $anchor.append($title);
 
-  var $year = document.createElement('p');
+  var $year = document.createElement('h6');
   $year.setAttribute('data-id', object.id);
+  $year.setAttribute('class', 'detailed-year');
   $year.textContent = object.year;
   $anchor.append($year);
   return $li;
@@ -60,7 +62,7 @@ function detailsMovie(object) {
 
   var $img = document.createElement('img');
   $img.setAttribute('src', object.image);
-  $img.setAttribute('class', 'detailed-image-container column-half');
+  $img.setAttribute('class', 'detailed-image column-half');
   $detailImgCont.append($img);
 
   var $detailedText = document.createElement('div');
@@ -134,11 +136,27 @@ function showList() {
   $listContainer.setAttribute('class', 'list-container column-full');
   var $details = document.querySelector('.detail-container');
   var $row = document.querySelector('.details');
-  $details.setAttribute('class', 'column-full detail-container hidden');
+  $details.setAttribute('class', 'hidden detail-container full-column');
   $details.removeChild($row);
+  hideWatchList();
 }
 
-var $ul = document.querySelector('ul');
+var $listContainer = document.querySelector('.list-container');
+var $watchList = document.querySelector('.watch-list');
+
+function viewWatchList(event) {
+  $listContainer.className = 'hidden list-container column-full';
+  $watchList.className = 'watch-list-container column-full';
+}
+viewWatchList();
+
+function hideWatchList(event) {
+  $listContainer.className = 'list-container column-full';
+  $watchList.className = 'hidden watch-list-container column-full';
+
+}
+
+var $ul = document.querySelector('.list');
 
 $ul.addEventListener('click', getDetails);
 
@@ -173,11 +191,22 @@ $homeBtn.addEventListener('click', showList);
 
 var $addToList = document.querySelector('.add-to-list');
 
-$addToList.addEventListener('click', addToWatchList);
-
-function addToWatchList(event) {
+$addToList.addEventListener('click', function addToWatchList(event) {
+  var $img = document.querySelector('.detailed-image');
+  var $imgValue = $img.getAttribute('src');
+  var $title = document.querySelector('.detailed-title');
+  var $year = document.querySelector('.detailed-year');
+  var $id = $title.getAttribute('data-id');
+  var datas = {
+    image: $imgValue,
+    title: $title.textContent,
+    year: $year.textContent,
+    id: String($id)
+  };
+  data.movie.push(datas);
+  movieDescription(datas);
   $addingPopUp.className = 'adding-btn-popup-container column-full';
-}
+});
 
 var $addingPopUp = document.querySelector('.adding-btn-popup-container');
 var $popUpPerfectBtn = document.querySelector('.popup-confirm-btn');
