@@ -1,3 +1,9 @@
+body {
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
 .header-background {
   background-color: #6c757d;
   padding: 0.5rem 0;
@@ -10,7 +16,6 @@
 
 .header-home {
   color: white;
-  background-color: #ff2e00;
   height: 40px;
   margin: auto 1rem;
   border-style: solid;
@@ -18,7 +23,18 @@
   width: 100px;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 .main-background {
+  background-color: #9c4848;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.detail-background {
   background-color: #9c4848;
   width: 100%;
   height: 100%;
@@ -34,8 +50,9 @@ h1 {
 }
 
 img {
-  width: 100%;
+  width: auto;
   height: auto;
+  max-width: 100%;
 }
 
 .brief-description {
@@ -51,7 +68,7 @@ ul {
 }
 
 li {
-  padding: 0 1rem;
+  padding: 0 0.8rem;
   list-style: none;
   margin-bottom: 2rem;
 }
@@ -60,6 +77,7 @@ p {
   margin-top: 0;
   padding-bottom: 0.5rem;
   margin-bottom: 0;
+  color: black;
 }
 
 .text-size-11 {
@@ -77,4 +95,89 @@ p {
 .image-container {
   width: 100%;
   height: 400px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.detailed-image-container {
+  object-fit: cover;
+  height: 590px;
+  margin-top: 0.6rem;
+  width: 500px;
+}
+
+.detail-container {
+  margin: 0;
+  padding-top: 1rem;
+}
+
+.detailed-box {
+  background-color: white;
+  height: 280px;
+  border-radius: 5px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+h4 {
+  font-family: Voltaire, sans-serif;
+  color: #6c757d;
+  height: auto;
+  padding: 5rem auto;
+  margin: 1rem auto;
+}
+
+.detailed-text {
+  margin: 1.2rem auto 1rem;
+}
+
+.description-box {
+  width: 80%;
+  margin: auto;
+}
+
+.adding-btn-popup-container {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 450px;
+  height: 100px;
+  background-color: #c4c4c4;
+  border-radius: 5px;
+}
+
+.popup-confirm-btn {
+  background-color: black;
+  color: white;
+  border-radius: 8px;
+  border: 1px solid black;
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, 0);
+}
+
+.yellow-background {
+  background-color: #d6b258;
+}
+
+.red-background {
+  background-color: #ff2e00;
+}
+
+h5 {
+  padding: 0 auto;
+  margin: 0 auto;
+  text-align: end;
+  width: 88%;
 }
