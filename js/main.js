@@ -60,6 +60,7 @@ function detailsMovie(object) {
 
   var $img = document.createElement('img');
   $img.setAttribute('src', object.image);
+  $img.setAttribute('class', 'detailed-image-container column-half');
   $detailImgCont.append($img);
 
   var $detailedText = document.createElement('div');
@@ -70,41 +71,49 @@ function detailsMovie(object) {
   $descriptionBox.setAttribute('class', 'detailed-box text-align-center');
   $detailedText.append($descriptionBox);
 
+  var $desciptionText = document.createElement('div');
+  $desciptionText.setAttribute('class', 'description-box');
+  $descriptionBox.append($desciptionText);
+
   var $descriptionTitle = document.createElement('h4');
   $descriptionTitle.textContent = 'Title: ' + object.title;
-  $descriptionBox.append($descriptionTitle);
+  $desciptionText.append($descriptionTitle);
 
   var $descriptionReleaseDate = document.createElement('h4');
   $descriptionReleaseDate.textContent = 'Release Date: ' + object.releaseState;
-  $descriptionBox.append($descriptionReleaseDate);
+  $desciptionText.append($descriptionReleaseDate);
 
   var $descriptionRunningTime = document.createElement('h4');
   $descriptionRunningTime.textContent = 'Running Time in Minutes: ' + object.runtimeMins + ' mins';
-  $descriptionBox.append($descriptionRunningTime);
+  $desciptionText.append($descriptionRunningTime);
 
   var $descriptionGenre = document.createElement('h4');
   $descriptionGenre.textContent = 'Genre: ' + object.genres;
-  $descriptionBox.append($descriptionGenre);
+  $desciptionText.append($descriptionGenre);
 
   var $descriptionDirector = document.createElement('h4');
   $descriptionDirector.textContent = 'Director: ' + object.directors;
-  $descriptionBox.append($descriptionDirector);
+  $desciptionText.append($descriptionDirector);
 
   var $descriptionStars = document.createElement('h4');
   $descriptionStars.textContent = 'Stars: ' + object.stars;
-  $descriptionBox.append($descriptionStars);
+  $desciptionText.append($descriptionStars);
 
   var $plotBox = document.createElement('div');
   $plotBox.setAttribute('class', 'detailed-box text-align-center');
   $detailedText.append($plotBox);
 
+  var $descriptionPlot = document.createElement('div');
+  $descriptionPlot.setAttribute('class', 'description-box');
+  $plotBox.append($descriptionPlot);
+
   var $plotText = document.createElement('h4');
   $plotText.textContent = 'BRIEF PLOT';
-  $plotBox.append($plotText);
+  $descriptionPlot.append($plotText);
 
   var $plot = document.createElement('h4');
   $plot.textContent = object.plot;
-  $plotBox.append($plot);
+  $descriptionPlot.append($plot);
 
   return $row;
 }
@@ -141,6 +150,8 @@ function getDetails(event) {
     var text = event.target.closest('p');
     var $textIds = text.getAttribute('data-id');
     var stringId = String($textIds);
+  } else {
+    showList();
   }
   hideList();
   xhr.addEventListener('load', function (event) {
