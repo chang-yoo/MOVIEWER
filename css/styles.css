@@ -6,7 +6,7 @@ body {
 
 .header-background {
   background-color: #6c757d;
-  padding: 0.5rem 0;
+  padding: 0.3rem 0;
 }
 
 .logo {
@@ -17,7 +17,6 @@ body {
 .header-home {
   color: white;
   height: 40px;
-  margin: auto 1rem;
   border-style: solid;
   border-radius: 5px;
   width: 100px;
