@@ -18,7 +18,8 @@
     <div class="column-full header-background">
       <div class="row container baseline">
         <h1 class="logo">Movie Knight</h1>
-        <button class="header-home">HOME</button>
+        <button class="header-home red-background">HOME</button>
+        <button class="header-home yellow-background">Watch List</button>
       </div>
     </div>
   </header>
@@ -36,14 +37,25 @@
         </div>
     <div class="main-background">
       <div class="container">
-        <div class="text-align-center">
+        <div class="list-text text-align-center">
           <h1>Coming Soon!</h1>
         </div>
-        <div class="column-full">
-          <ul class="row">
+        <div class="list-container column-full">
+          <ul class="row list">
           </ul>
         </div>
+        <div class="hidden watch-list-container column-full">
+          <ul class="row watch-list">
+          </ul>
+        </div>
+        <div class="column-full detail-container hidden">
+          <a class="add-to-list"><h5>Add To Watch List</h5></a>
+        </div>
       </div>
+    </div>
+    <div class="hidden adding-btn-popup-container column-full">
+      <h2 class="text-align-center">Added to watch list!</h2>
+      <button class="popup-confirm-btn">Perfect</button>
     </div>
   </main>
   <script src="js/data.js"></script>

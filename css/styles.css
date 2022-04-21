@@ -10,7 +10,7 @@ body {
 
 .header-background {
   background-color: #6c757d;
-  padding: 0.5rem 0;
+  padding: 0.3rem 0;
 }
 
 .logo {
@@ -20,9 +20,7 @@ body {
 
 .header-home {
   color: white;
-  background-color: #ff2e00;
   height: 40px;
-  margin: auto 1rem;
   border-style: solid;
   border-radius: 5px;
   width: 100px;
@@ -36,6 +34,7 @@ button:hover {
   background-color: #9c4848;
   width: 100%;
   min-height: 100vh;
+  height: 100%;
 }
 
 .detail-background {
@@ -45,7 +44,6 @@ button:hover {
 .main-background {
   background-color: #9c4848;
   width: 100%;
-
   height: 100%;
 }
 
@@ -59,13 +57,9 @@ h1 {
 }
 
 img {
-
   width: auto;
   height: auto;
   max-width: 100%;
-
-  width: 100%;
-  height: auto;
 }
 
 .brief-description {
@@ -81,26 +75,28 @@ ul {
 }
 
 li {
-
   padding: 0 0.8rem;
-
-  padding: 0 1rem;
-
   list-style: none;
   margin-bottom: 2rem;
 }
 
+h6,
 p {
   margin-top: 0;
   padding-bottom: 0.5rem;
   margin-bottom: 0;
-
-  color: black;
-
 }
 
 .text-size-11 {
   font-size: 11px;
+}
+
+.detailed-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  padding-top: 0.5rem;
 }
 
 .brief-image {
@@ -116,7 +112,6 @@ p {
   height: 400px;
 }
 
-
 a {
   text-decoration: none;
 }
@@ -127,14 +122,15 @@ a:hover {
 
 .detailed-image-container {
   object-fit: cover;
-  height: 590px;
+  height: 600px;
   margin-top: 0.6rem;
   width: 500px;
 }
 
-.margin-0 {
+.detail-container {
   margin: 0;
-}
+  padding-top: 1rem;
+  width: 100%;
 
 .detailed-box {
   background-color: white;
@@ -162,4 +158,46 @@ h4 {
 .description-box {
   width: 80%;
   margin: auto;
+}
+
+
+.adding-btn-popup-container {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 450px;
+  height: 100px;
+  background-color: #c4c4c4;
+  border-radius: 5px;
+}
+
+.popup-confirm-btn {
+  background-color: black;
+  color: white;
+  border-radius: 8px;
+  border: 1px solid black;
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, 0);
+}
+
+.yellow-background {
+  background-color: #d6b258;
+}
+
+.red-background {
+  background-color: #ff2e00;
+}
+
+h5 {
+  margin: 0;
+  padding: 0;
+  text-align: end;
+  width: 94%;
+}
+
+.details {
+  width: 100%;
 }

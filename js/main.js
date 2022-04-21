@@ -1,8 +1,5 @@
 function comingMovie() {
-  var $ul = document.querySelector('ul');
-var $ul = document.querySelector('ul');
-
-function comingMovie() {
+  var $ul = document.querySelector('.list');
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://imdb-api.com/en/API/ComingSoon/k_4003h2lv');
   xhr.responseType = 'json';
@@ -16,7 +13,6 @@ function comingMovie() {
   xhr.send();
 }
 window.addEventListener('load', comingMovie);
-comingMovie();
 
 function movieDescription(object) {
   var $li = document.createElement('li');
@@ -44,11 +40,13 @@ function movieDescription(object) {
 
   var $title = document.createElement('p');
   $title.setAttribute('data-id', object.id);
+  $title.setAttribute('class', 'detailed-title');
   $title.textContent = object.title;
   $anchor.append($title);
 
-  var $year = document.createElement('p');
+  var $year = document.createElement('h6');
   $year.setAttribute('data-id', object.id);
+  $year.setAttribute('class', 'detailed-year');
   $year.textContent = object.year;
   $anchor.append($year);
   return $li;
@@ -64,7 +62,7 @@ function detailsMovie(object) {
 
   var $img = document.createElement('img');
   $img.setAttribute('src', object.image);
-  $img.setAttribute('class', 'detailed-image-container column-half');
+  $img.setAttribute('class', 'detailed-image column-half');
   $detailImgCont.append($img);
 
   var $detailedText = document.createElement('div');
@@ -127,8 +125,8 @@ function hideList() {
   var $listContainer = document.querySelector('.list-container');
   $listText.setAttribute('class', 'list-text text-align-center hidden');
   $listContainer.setAttribute('class', 'list-container column-full hidden');
-  var $details = document.querySelector('.margin-0');
-  $details.setAttribute('class', 'column-full margin-0');
+  var $details = document.querySelector('.detail-container');
+  $details.setAttribute('class', 'column-full detail-container');
 }
 
 function showList() {
@@ -136,13 +134,29 @@ function showList() {
   var $listContainer = document.querySelector('.list-container');
   $listText.setAttribute('class', 'list-text text-align-center');
   $listContainer.setAttribute('class', 'list-container column-full');
-  var $details = document.querySelector('.margin-0');
+  var $details = document.querySelector('.detail-container');
   var $row = document.querySelector('.details');
-  $details.setAttribute('class', 'column-full margin-0 hidden');
+  $details.setAttribute('class', 'hidden detail-container full-column');
   $details.removeChild($row);
+  hideWatchList();
 }
 
-var $ul = document.querySelector('ul');
+var $listContainer = document.querySelector('.list-container');
+var $watchList = document.querySelector('.watch-list');
+
+function viewWatchList(event) {
+  $listContainer.className = 'hidden list-container column-full';
+  $watchList.className = 'watch-list-container column-full';
+}
+viewWatchList();
+
+function hideWatchList(event) {
+  $listContainer.className = 'list-container column-full';
+  $watchList.className = 'hidden watch-list-container column-full';
+
+}
+
+var $ul = document.querySelector('.list');
 
 $ul.addEventListener('click', getDetails);
 
@@ -164,7 +178,7 @@ function getDetails(event) {
       if (items[i].id === stringId) {
         var singleMovie = items[i];
         var descriptionOfSingleMovie = detailsMovie(singleMovie);
-        var $detailContainer = document.querySelector('.margin-0');
+        var $detailContainer = document.querySelector('.detail-container');
         $detailContainer.append(descriptionOfSingleMovie);
       }
     }
@@ -174,13 +188,30 @@ function getDetails(event) {
 
 var $homeBtn = document.querySelector('.header-home');
 $homeBtn.addEventListener('click', showList);
-  var $title = document.createElement('p');
-  $title.textContent = object.title;
-  $briefDesc.append($title);
 
-  var $year = document.createElement('p');
-  $year.textContent = object.year;
-  $briefDesc.append($year);
+var $addToList = document.querySelector('.add-to-list');
 
-  return $li;
+$addToList.addEventListener('click', function addToWatchList(event) {
+  var $img = document.querySelector('.detailed-image');
+  var $imgValue = $img.getAttribute('src');
+  var $title = document.querySelector('.detailed-title');
+  var $year = document.querySelector('.detailed-year');
+  var $id = $title.getAttribute('data-id');
+  var datas = {
+    image: $imgValue,
+    title: $title.textContent,
+    year: $year.textContent,
+    id: String($id)
+  };
+  data.movie.push(datas);
+  movieDescription(datas);
+  $addingPopUp.className = 'adding-btn-popup-container column-full';
+});
+
+var $addingPopUp = document.querySelector('.adding-btn-popup-container');
+var $popUpPerfectBtn = document.querySelector('.popup-confirm-btn');
+$popUpPerfectBtn.addEventListener('click', popUpRemove);
+
+function popUpRemove(event) {
+  $addingPopUp.className = 'hidden adding-btn-popup-container column-full';
 }
