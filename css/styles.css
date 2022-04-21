@@ -41,6 +41,11 @@ button:hover {
 .detail-background {
   background-color: #9c4848;
   width: 100%;
+
+.main-background {
+  background-color: #9c4848;
+  width: 100%;
+
   height: 100%;
 }
 
@@ -54,9 +59,13 @@ h1 {
 }
 
 img {
+
   width: auto;
   height: auto;
   max-width: 100%;
+
+  width: 100%;
+  height: auto;
 }
 
 .brief-description {
@@ -72,7 +81,11 @@ ul {
 }
 
 li {
+
   padding: 0 0.8rem;
+
+  padding: 0 1rem;
+
   list-style: none;
   margin-bottom: 2rem;
 }
@@ -81,7 +94,9 @@ p {
   margin-top: 0;
   padding-bottom: 0.5rem;
   margin-bottom: 0;
+
   color: black;
+
 }
 
 .text-size-11 {
@@ -100,6 +115,7 @@ p {
   width: 100%;
   height: 400px;
 }
+
 
 a {
   text-decoration: none;

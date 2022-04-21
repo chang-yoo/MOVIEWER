@@ -1,5 +1,8 @@
 function comingMovie() {
   var $ul = document.querySelector('ul');
+var $ul = document.querySelector('ul');
+
+function comingMovie() {
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://imdb-api.com/en/API/ComingSoon/k_4003h2lv');
   xhr.responseType = 'json';
@@ -13,6 +16,7 @@ function comingMovie() {
   xhr.send();
 }
 window.addEventListener('load', comingMovie);
+comingMovie();
 
 function movieDescription(object) {
   var $li = document.createElement('li');
@@ -170,3 +174,13 @@ function getDetails(event) {
 
 var $homeBtn = document.querySelector('.header-home');
 $homeBtn.addEventListener('click', showList);
+  var $title = document.createElement('p');
+  $title.textContent = object.title;
+  $briefDesc.append($title);
+
+  var $year = document.createElement('p');
+  $year.textContent = object.year;
+  $briefDesc.append($year);
+
+  return $li;
+}
