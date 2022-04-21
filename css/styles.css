@@ -18,6 +18,10 @@
   width: 100px;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 .main-background {
   background-color: #9c4848;
   width: 100%;

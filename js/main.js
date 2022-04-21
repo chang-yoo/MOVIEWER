@@ -1,6 +1,5 @@
-var $ul = document.querySelector('ul');
-
 function comingMovie() {
+  var $ul = document.querySelector('ul');
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://imdb-api.com/en/API/ComingSoon/k_4003h2lv');
   xhr.responseType = 'json';
@@ -13,7 +12,7 @@ function comingMovie() {
   });
   xhr.send();
 }
-comingMovie();
+window.addEventListener('load', comingMovie);
 
 function movieDescription(object) {
   var $li = document.createElement('li');
@@ -40,21 +39,20 @@ function movieDescription(object) {
   $briefDesc.append($anchor);
 
   var $title = document.createElement('p');
+  $title.setAttribute('data-id', object.id);
   $title.textContent = object.title;
   $anchor.append($title);
 
   var $year = document.createElement('p');
+  $year.setAttribute('data-id', object.id);
   $year.textContent = object.year;
   $anchor.append($year);
-
   return $li;
 }
 
-var $detailContainer = document.querySelector('.margin-0');
-
 function detailsMovie(object) {
   var $row = document.createElement('div');
-  $row.setAttribute('class', 'row');
+  $row.setAttribute('class', 'row details');
 
   var $detailImgCont = document.createElement('div');
   $detailImgCont.setAttribute('class', 'detailed-image-container column-one-third');
@@ -116,20 +114,48 @@ function hideList() {
   var $listContainer = document.querySelector('.list-container');
   $listText.setAttribute('class', 'list-text text-align-center hidden');
   $listContainer.setAttribute('class', 'list-container column-full hidden');
+  var $details = document.querySelector('.margin-0');
+  $details.setAttribute('class', 'column-full margin-0');
 }
 
-function getDetailsMovie() {
+function showList() {
+  var $listText = document.querySelector('.list-text');
+  var $listContainer = document.querySelector('.list-container');
+  $listText.setAttribute('class', 'list-text text-align-center');
+  $listContainer.setAttribute('class', 'list-container column-full');
+  var $details = document.querySelector('.margin-0');
+  var $row = document.querySelector('.details');
+  $details.setAttribute('class', 'column-full margin-0 hidden');
+  $details.removeChild($row);
+}
+
+var $ul = document.querySelector('ul');
+
+$ul.addEventListener('click', getDetails);
+
+function getDetails(event) {
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://imdb-api.com/en/API/ComingSoon/k_4003h2lv');
   xhr.responseType = 'json';
-  xhr.addEventListener('load', function () {
+  if (event.target.tagName === 'P') {
+    var text = event.target.closest('p');
+    var $textIds = text.getAttribute('data-id');
+    var stringId = String($textIds);
+  }
+  hideList();
+  xhr.addEventListener('load', function (event) {
     var items = xhr.response.items;
     for (var i = 0; i < items.length; i++) {
-      var details = detailsMovie(items[i]);
-      $detailContainer.append(details);
+      if (items[i].id === stringId) {
+        var singleMovie = items[i];
+        var descriptionOfSingleMovie = detailsMovie(singleMovie);
+        var $detailContainer = document.querySelector('.margin-0');
+        $detailContainer.append(descriptionOfSingleMovie);
+      }
     }
   });
-  hideList();
   xhr.send();
 }
-getDetailsMovie();
+
+var $homeBtn = document.querySelector('.header-home');
+$homeBtn.addEventListener('click', showList);
