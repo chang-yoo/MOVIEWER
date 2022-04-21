@@ -11,7 +11,9 @@ function comingMovie() {
     }
   });
   xhr.send();
+  showList();
 }
+
 window.addEventListener('load', comingMovie);
 
 function movieDescription(object) {
@@ -121,19 +123,16 @@ function detailsMovie(object) {
 }
 
 function hideList() {
-  var $listText = document.querySelector('.list-text');
-  var $listContainer = document.querySelector('.list-container');
-  $listText.setAttribute('class', 'list-text text-align-center hidden');
-  $listContainer.setAttribute('class', 'list-container column-full hidden');
+  var $listBox = document.querySelector('.list-box');
+  $listBox.className = 'list-box hidden';
   var $details = document.querySelector('.detail-container');
   $details.setAttribute('class', 'column-full detail-container');
+  hideWatchList();
 }
 
 function showList() {
-  var $listText = document.querySelector('.list-text');
-  var $listContainer = document.querySelector('.list-container');
-  $listText.setAttribute('class', 'list-text text-align-center');
-  $listContainer.setAttribute('class', 'list-container column-full');
+  var $listBox = document.querySelector('.list-box');
+  $listBox.className = 'list-box';
   var $details = document.querySelector('.detail-container');
   var $row = document.querySelector('.details');
   $details.setAttribute('class', 'hidden detail-container full-column');
@@ -141,19 +140,16 @@ function showList() {
   hideWatchList();
 }
 
-var $listContainer = document.querySelector('.list-container');
-var $watchList = document.querySelector('.watch-list');
-
 function viewWatchList(event) {
-  $listContainer.className = 'hidden list-container column-full';
+  var $watchList = document.querySelector('.watch-list-container');
   $watchList.className = 'watch-list-container column-full';
 }
-viewWatchList();
 
 function hideWatchList(event) {
+  var $listContainer = document.querySelector('.list-container');
+  var $watchList = document.querySelector('.watch-list-container');
   $listContainer.className = 'list-container column-full';
   $watchList.className = 'hidden watch-list-container column-full';
-
 }
 
 var $ul = document.querySelector('.list');
@@ -214,4 +210,25 @@ $popUpPerfectBtn.addEventListener('click', popUpRemove);
 
 function popUpRemove(event) {
   $addingPopUp.className = 'hidden adding-btn-popup-container column-full';
+}
+
+var $watchListBtn = document.querySelector('.yellow-background');
+
+$watchListBtn.addEventListener('click', watchList);
+function watchList(event) {
+  hideList();
+  var details = document.querySelector('.detail-container');
+  details.className = 'column-full detail-container hidden';
+  viewWatchList();
+  var movies = data.movie;
+  for (var i = 0; i < movies.length; i++) {
+    if (movies[i] === 0) {
+      var $watchListText = document.querySelector('.watch-list-text');
+      $watchListText.className = 'hidden';
+    } else {
+      var watchListMovies = movieDescription(movies[i]);
+      var $ul = document.querySelector('.watch-list');
+      $ul.append(watchListMovies);
+    }
+  }
 }
