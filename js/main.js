@@ -37,24 +37,29 @@ function movieDescription(object) {
 
   var $anchor = document.createElement('a');
   $anchor.setAttribute('href', '#');
+  $anchor.setAttribute('class', 'brief-text-box');
   $briefDesc.append($anchor);
 
   var $title = document.createElement('p');
   $title.setAttribute('data-id', object.id);
-  $title.setAttribute('class', 'detailed-title');
+  $title.setAttribute('class', 'brief-title');
   $title.textContent = object.title;
   $anchor.append($title);
 
   var $year = document.createElement('h6');
   $year.setAttribute('data-id', object.id);
-  $year.setAttribute('class', 'detailed-year');
+  $year.setAttribute('class', 'brief-year');
   $year.textContent = object.year;
   $anchor.append($year);
 
+  var $deleteBox = document.createElement('div');
+  $deleteBox.setAttribute('class', 'delete-button hidden');
+  $briefDesc.append($deleteBox);
+
   var $delete = document.createElement('a');
-  $delete.setAttribute('class', 'delete-button');
+  $delete.setAttribute('class', 'delete');
   $delete.textContent = 'Delete';
-  $briefDesc.append($delete);
+  $deleteBox.append($delete);
 
   return $li;
 }
@@ -132,7 +137,10 @@ function hideList() {
   $listBox.className = 'list-box hidden';
   var $details = document.querySelector('.detail-container');
   $details.setAttribute('class', 'column-full detail-container');
-  hideWatchList();
+  var $listContainer = document.querySelector('.list-container');
+  var $watchList = document.querySelector('.watch-list-container');
+  $listContainer.className = 'list-container column-full';
+  $watchList.setAttribute('class', 'watch-list-container column-full hidden');
 }
 
 function viewWatchList(event) {
@@ -179,16 +187,18 @@ function getDetails(event) {
 
 var $homeBtn = document.querySelector('.red-background');
 $homeBtn.addEventListener('click', showList);
+
 function showList() {
   var $listBox = document.querySelector('.list-box');
   $listBox.className = 'list-box';
-  var $row = document.querySelector('.details');
   var $details = document.querySelector('.detail-container');
   $details.className = 'hidden detail-container full-column';
-  if ($row !== undefined) {
-    $details.removeChild($row);
-  }
   hideWatchList();
+  $details.removeChild($details.lastElementChild);
+  var $deleteBtn = document.querySelectorAll('.delete-button');
+  for (var q = 0; q < $deleteBtn.length; q++) {
+    $deleteBtn[q].className = 'hidden delete-button';
+  }
 }
 
 var $addToList = document.querySelector('.add-to-list');
@@ -226,6 +236,10 @@ $watchListBtn.addEventListener('click', watchList);
 
 function watchList(event) {
   hideList();
+  var $deleteBtn = document.querySelectorAll('.delete-button');
+  for (var q = 0; q < $deleteBtn.length; q++) {
+    $deleteBtn[q].className = 'delete-button';
+  }
   var details = document.querySelector('.detail-container');
   details.className = 'column-full detail-container hidden';
   viewWatchList();
