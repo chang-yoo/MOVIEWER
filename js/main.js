@@ -275,3 +275,11 @@ function deleteMovie(event) {
     }
   }
 }
+
+var $deleteNo = document.querySelector('.delete-no');
+$deleteNo.addEventListener('click', removePopup);
+
+function removePopup(event) {
+  var $deleteBackground = document.querySelector('.delete-confirm-background');
+  $deleteBackground.className = 'delete-confirm-background hidden';
+}
