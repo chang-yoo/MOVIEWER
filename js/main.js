@@ -50,6 +50,12 @@ function movieDescription(object) {
   $year.setAttribute('class', 'detailed-year');
   $year.textContent = object.year;
   $anchor.append($year);
+
+  var $delete = document.createElement('a');
+  $delete.setAttribute('class', 'delete-button');
+  $delete.textContent = 'Delete';
+  $briefDesc.append($delete);
+
   return $li;
 }
 
@@ -176,10 +182,12 @@ $homeBtn.addEventListener('click', showList);
 function showList() {
   var $listBox = document.querySelector('.list-box');
   $listBox.className = 'list-box';
-  var $details = document.querySelector('.detail-container');
   var $row = document.querySelector('.details');
+  var $details = document.querySelector('.detail-container');
   $details.className = 'hidden detail-container full-column';
-  $details.removeChild($row);
+  if ($row !== undefined) {
+    $details.removeChild($row);
+  }
   hideWatchList();
 }
 

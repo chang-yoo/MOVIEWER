@@ -61,6 +61,7 @@ img {
   background-color: white;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  position: relative;
 }
 
 ul {
@@ -205,4 +206,13 @@ h1 {
 
 .watch-list-title {
   padding-top: 1rem;
+}
+
+.delete-button {
+  position: absolute;
+  left: 2%;
+  top: 50%;
+  color: red;
+  border-bottom-width: 1px;
+  border-bottom-color: red;
 }
