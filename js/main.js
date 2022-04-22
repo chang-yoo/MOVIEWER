@@ -194,11 +194,11 @@ function showList() {
   var $details = document.querySelector('.detail-container');
   $details.className = 'hidden detail-container full-column';
   hideWatchList();
-  $details.removeChild($details.lastElementChild);
   var $deleteBtn = document.querySelectorAll('.delete-button');
   for (var q = 0; q < $deleteBtn.length; q++) {
     $deleteBtn[q].className = 'hidden delete-button';
   }
+  $details.removeChild($details.lastElementChild);
 }
 
 var $addToList = document.querySelector('.add-to-list');
@@ -263,3 +263,11 @@ function loadWatchList(event) {
     $ul.prepend(selectedMovie);
   }
 }
+
+// var $deleteButton = document.querySelectorAll('.delete')
+
+// $deleteButton.addEventListener('click', deleteConfirm)
+
+// function deleteConfirm(event){
+
+// }
