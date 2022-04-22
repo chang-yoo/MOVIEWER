@@ -264,10 +264,14 @@ function loadWatchList(event) {
   }
 }
 
-// var $deleteButton = document.querySelectorAll('.delete')
+window.addEventListener('click', deleteMovie);
 
-// $deleteButton.addEventListener('click', deleteConfirm)
-
-// function deleteConfirm(event){
-
-// }
+function deleteMovie(event) {
+  var $deleteButton = document.querySelectorAll('.delete');
+  for (var i = 0; i < $deleteButton.length; i++) {
+    if (event.target === $deleteButton[i]) {
+      var $deleteBackground = document.querySelector('.delete-confirm-background');
+      $deleteBackground.className = 'delete-confirm-background';
+    }
+  }
+}
