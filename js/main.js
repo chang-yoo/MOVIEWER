@@ -12,6 +12,7 @@ function comingMovie() {
   });
   xhr.send();
 }
+
 window.addEventListener('load', comingMovie);
 
 function movieDescription(object) {
@@ -121,39 +122,23 @@ function detailsMovie(object) {
 }
 
 function hideList() {
-  var $listText = document.querySelector('.list-text');
-  var $listContainer = document.querySelector('.list-container');
-  $listText.setAttribute('class', 'list-text text-align-center hidden');
-  $listContainer.setAttribute('class', 'list-container column-full hidden');
+  var $listBox = document.querySelector('.list-box');
+  $listBox.className = 'list-box hidden';
   var $details = document.querySelector('.detail-container');
   $details.setAttribute('class', 'column-full detail-container');
-}
-
-function showList() {
-  var $listText = document.querySelector('.list-text');
-  var $listContainer = document.querySelector('.list-container');
-  $listText.setAttribute('class', 'list-text text-align-center');
-  $listContainer.setAttribute('class', 'list-container column-full');
-  var $details = document.querySelector('.detail-container');
-  var $row = document.querySelector('.details');
-  $details.setAttribute('class', 'hidden detail-container full-column');
-  $details.removeChild($row);
   hideWatchList();
 }
 
-var $listContainer = document.querySelector('.list-container');
-var $watchList = document.querySelector('.watch-list');
-
 function viewWatchList(event) {
-  $listContainer.className = 'hidden list-container column-full';
+  var $watchList = document.querySelector('.watch-list-container');
   $watchList.className = 'watch-list-container column-full';
 }
-viewWatchList();
 
 function hideWatchList(event) {
+  var $listContainer = document.querySelector('.list-container');
+  var $watchList = document.querySelector('.watch-list-container');
   $listContainer.className = 'list-container column-full';
-  $watchList.className = 'hidden watch-list-container column-full';
-
+  $watchList.setAttribute('class', 'watch-list-container column-full hidden');
 }
 
 var $ul = document.querySelector('.list');
@@ -186,8 +171,17 @@ function getDetails(event) {
   xhr.send();
 }
 
-var $homeBtn = document.querySelector('.header-home');
+var $homeBtn = document.querySelector('.red-background');
 $homeBtn.addEventListener('click', showList);
+function showList() {
+  var $listBox = document.querySelector('.list-box');
+  $listBox.className = 'list-box';
+  var $details = document.querySelector('.detail-container');
+  var $row = document.querySelector('.details');
+  $details.className = 'hidden detail-container full-column';
+  $details.removeChild($row);
+  hideWatchList();
+}
 
 var $addToList = document.querySelector('.add-to-list');
 
@@ -204,7 +198,9 @@ $addToList.addEventListener('click', function addToWatchList(event) {
     id: String($id)
   };
   data.movie.push(datas);
-  movieDescription(datas);
+  var addToWatchList = movieDescription(datas);
+  var $ul = document.querySelector('.watch-list');
+  $ul.append(addToWatchList);
   $addingPopUp.className = 'adding-btn-popup-container column-full';
 });
 
@@ -214,4 +210,34 @@ $popUpPerfectBtn.addEventListener('click', popUpRemove);
 
 function popUpRemove(event) {
   $addingPopUp.className = 'hidden adding-btn-popup-container column-full';
+}
+
+var $watchListBtn = document.querySelector('.yellow-background');
+
+$watchListBtn.addEventListener('click', watchList);
+
+function watchList(event) {
+  hideList();
+  var details = document.querySelector('.detail-container');
+  details.className = 'column-full detail-container hidden';
+  viewWatchList();
+  var movies = data.movie;
+  var $watchListText = document.querySelector('.watch-list-text');
+  for (var i = 0; i < movies.length; i++) {
+    if (movies[i] === 0) {
+      $watchListText.className = 'watch-list-text';
+    } else {
+      $watchListText.className = 'watch-list-text hidden';
+    }
+  }
+}
+
+window.addEventListener('DOMContentLoaded', loadWatchList);
+function loadWatchList(event) {
+  var movies = data.movie;
+  var $ul = document.querySelector('.watch-list');
+  for (var i = 0; i < movies.length; i++) {
+    var selectedMovie = movieDescription(movies[i]);
+    $ul.prepend(selectedMovie);
+  }
 }

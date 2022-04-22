@@ -1,7 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
   min-height: 100%;
   padding: 0;
@@ -16,6 +12,7 @@ body {
 .logo {
   font-family: Yellowtail, sans-serif;
   color: #dd295f;
+  font-size: 30px;
 }
 
 .header-home {
@@ -24,6 +21,7 @@ body {
   border-style: solid;
   border-radius: 5px;
   width: 100px;
+  margin: auto 1rem;
 }
 
 button:hover {
@@ -38,10 +36,6 @@ button:hover {
 }
 
 .detail-background {
-  background-color: #9c4848;
-  width: 100%;
-
-.main-background {
   background-color: #9c4848;
   width: 100%;
   height: 100%;
@@ -85,6 +79,7 @@ p {
   margin-top: 0;
   padding-bottom: 0.5rem;
   margin-bottom: 0;
+  color: black;
 }
 
 .text-size-11 {
@@ -131,6 +126,7 @@ a:hover {
   margin: 0;
   padding-top: 1rem;
   width: 100%;
+}
 
 .detailed-box {
   background-color: white;
@@ -159,7 +155,6 @@ h4 {
   width: 80%;
   margin: auto;
 }
-
 
 .adding-btn-popup-container {
   position: fixed;
@@ -200,4 +195,14 @@ h5 {
 
 .details {
   width: 100%;
+}
+
+h2,
+h1 {
+  margin-top: 0;
+  color: white;
+}
+
+.watch-list-title {
+  padding-top: 1rem;
 }
