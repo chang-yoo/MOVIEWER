@@ -41,51 +41,43 @@ body {
     width: 100%;
   }
 
-  img {
-    width: 100%;
-  }
-
   .logo {
     font-size: 20px;
   }
 
-  .header-home {
-    margin: auto 0.2rem;
-  }
-}
-
-@media only screen and (min-width: 600px) and (max-width: 900px) {
-  li {
-    width: 50%;
-  }
-
-  .column-half {
-    width: 75%;
-  }
-
-  img {
-    width: 75%;
-  }
-
-  .logo {
-    font-size: 30px;
+  p {
+    font-size: 20px;
   }
 
   .header-home {
-    margin: auto 1rem;
-  }
-}
-
-@media only screen and (min-width: 900px) {
-  li {
-    width: 25%;
+    margin: auto 0;
   }
 
-  .column-half {
-    width: 50%;
+  @media only screen and (min-width: 600px) and (max-width: 1000px) {
+    li {
+      width: 50%;
+    }
+
+    .column-half {
+      width: 100%;
+    }
+
+    .logo {
+      font-size: 30px;
+    }
   }
 
-  img {
-    width: 50%;
+  @media only screen and (min-width: 1000px) {
+    li {
+      width: 25%;
+    }
+
+    p {
+      font-size: 30px;
+    }
+
+    .column-half {
+      width: 50%;
+    }
   }
 }

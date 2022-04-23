@@ -12,7 +12,6 @@ body {
 .logo {
   font-family: Yellowtail, sans-serif;
   color: #dd295f;
-  font-size: 30px;
 }
 
 .header-home {
@@ -20,8 +19,8 @@ body {
   height: 40px;
   border-style: solid;
   border-radius: 5px;
-  width: 100px;
   margin: auto 1rem;
+  width: 80px;
 }
 
 button:hover {

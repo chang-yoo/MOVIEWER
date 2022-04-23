@@ -17,6 +17,8 @@ window.addEventListener('load', comingMovie);
 
 function movieDescription(object) {
   var $li = document.createElement('li');
+  $li.setAttribute('class', 'descriptions');
+  $li.setAttribute('data-id', object.id);
 
   var $briefCon = document.createElement('div');
   $briefCon.setAttribute('class', 'brief-container');
@@ -67,9 +69,10 @@ function movieDescription(object) {
 function detailsMovie(object) {
   var $row = document.createElement('div');
   $row.setAttribute('class', 'row details');
+  $row.setAttribute('data-id', object.id);
 
   var $detailImgCont = document.createElement('div');
-  $detailImgCont.setAttribute('class', 'detailed-image-container column-one-third');
+  $detailImgCont.setAttribute('class', 'detailed-image-container column-half');
   $row.append($detailImgCont);
 
   var $img = document.createElement('img');
@@ -90,8 +93,14 @@ function detailsMovie(object) {
   $descriptionBox.append($desciptionText);
 
   var $descriptionTitle = document.createElement('h4');
+  $descriptionTitle.setAttribute('class', 'brief-title');
   $descriptionTitle.textContent = 'Title: ' + object.title;
   $desciptionText.append($descriptionTitle);
+
+  var $descriptionYear = document.createElement('h4');
+  $descriptionYear.setAttribute('class', 'brief-year');
+  $descriptionYear.textContent = object.year;
+  $desciptionText.append($descriptionYear);
 
   var $descriptionReleaseDate = document.createElement('h4');
   $descriptionReleaseDate.textContent = 'Release Date: ' + object.releaseState;
@@ -167,10 +176,10 @@ function getDetails(event) {
     var text = event.target.closest('p');
     var $textIds = text.getAttribute('data-id');
     var stringId = String($textIds);
+    hideList();
   } else {
     showList();
   }
-  hideList();
   xhr.addEventListener('load', function (event) {
     var items = xhr.response.items;
     for (var i = 0; i < items.length; i++) {
@@ -198,17 +207,22 @@ function showList() {
   for (var q = 0; q < $deleteBtn.length; q++) {
     $deleteBtn[q].className = 'hidden delete-button';
   }
-  $details.removeChild($details.lastElementChild);
+  var $row = document.querySelector('.details');
+  if ($details.contains($row)) {
+    $details.removeChild($row);
+  }
 }
 
 var $addToList = document.querySelector('.add-to-list');
 
 $addToList.addEventListener('click', function addToWatchList(event) {
-  var $img = document.querySelector('.detailed-image');
+  var $addToListText = document.querySelector('.add-to-list');
+  var $li = $addToListText.nextElementSibling;
+  var $img = $li.querySelector('img');
   var $imgValue = $img.getAttribute('src');
-  var $title = document.querySelector('.detailed-title');
-  var $year = document.querySelector('.detailed-year');
-  var $id = $title.getAttribute('data-id');
+  var $title = $li.querySelector('.brief-title');
+  var $year = $li.querySelector('.brief-year');
+  var $id = $li.getAttribute('data-id');
   var datas = {
     image: $imgValue,
     title: $title.textContent,
@@ -243,14 +257,16 @@ function watchList(event) {
   var details = document.querySelector('.detail-container');
   details.className = 'column-full detail-container hidden';
   viewWatchList();
+  emptyText();
+}
+
+function emptyText() {
   var movies = data.movie;
   var $watchListText = document.querySelector('.watch-list-text');
-  for (var i = 0; i < movies.length; i++) {
-    if (movies[i] === 0) {
-      $watchListText.className = 'watch-list-text';
-    } else {
-      $watchListText.className = 'watch-list-text hidden';
-    }
+  if (movies.length === 0) {
+    $watchListText.className = 'watch-list-text';
+  } else {
+    $watchListText.className = 'watch-list-text hidden';
   }
 }
 
@@ -272,14 +288,38 @@ function deleteMovie(event) {
     if (event.target === $deleteButton[i]) {
       var $deleteBackground = document.querySelector('.delete-confirm-background');
       $deleteBackground.className = 'delete-confirm-background';
+      var $movieToBeRemoved = event.target.closest('li');
+      var $removeMovieId = $movieToBeRemoved.getAttribute('data-id');
+      data.editing = $removeMovieId;
     }
   }
 }
 
 var $deleteNo = document.querySelector('.delete-no');
 $deleteNo.addEventListener('click', removePopup);
-
 function removePopup(event) {
   var $deleteBackground = document.querySelector('.delete-confirm-background');
   $deleteBackground.className = 'delete-confirm-background hidden';
+}
+
+var $deleteYes = document.querySelector('.delete-yes');
+
+$deleteYes.addEventListener('click', removeMovie);
+
+function removeMovie(event) {
+  var $shadeBackground = document.querySelector('.delete-confirm-background');
+  $shadeBackground.className = 'delete-confirm-background hidden';
+  var $ul = document.querySelector('.watch-list');
+  var $li = $ul.querySelectorAll('li');
+  for (var q = 0; q < $li.length; q++) {
+    var ids = $li[q].getAttribute('data-id');
+    if (ids === data.editing) {
+      $ul.removeChild($li[q]);
+    }
+  }
+  for (var i = 0; i < data.movie.length; i++) {
+    if (data.editing === data.movie[i].id) {
+      data.movie.splice(i, 1);
+    }
+  } emptyText();
 }
