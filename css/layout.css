@@ -42,11 +42,11 @@ body {
   }
 
   .logo {
-    font-size: 20px;
+    font-size: 1.2rem;
   }
 
   p {
-    font-size: 20px;
+    font-size: 1.2rem;
   }
 
   .header-home {
@@ -63,7 +63,7 @@ body {
     }
 
     .logo {
-      font-size: 30px;
+      font-size: 2rem;
     }
   }
 
@@ -73,7 +73,7 @@ body {
     }
 
     p {
-      font-size: 30px;
+      font-size: 0.15rem;
     }
 
     .column-half {
