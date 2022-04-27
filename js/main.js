@@ -38,8 +38,6 @@ function movieDescription(object) {
   $briefCon.append($briefDesc);
 
   var $anchor = document.createElement('a');
-  $anchor.setAttribute('href', '#');
-  $anchor.setAttribute('class', 'brief-text-box');
   $briefDesc.append($anchor);
 
   var $title = document.createElement('p');

@@ -53,6 +53,7 @@ body {
     width: 100%;
   }
 
+  h3,
   p {
     font-size: 0.8rem;
   }
@@ -65,6 +66,10 @@ body {
 
   .column-half {
     width: 100%;
+  }
+
+  h3 {
+    font-size: 1.2rem;
   }
 
   .logo {
@@ -83,6 +88,10 @@ body {
 
   p {
     font-size: 1rem;
+  }
+
+  h3 {
+    font-size: 2rem;
   }
 
   .column-half {
