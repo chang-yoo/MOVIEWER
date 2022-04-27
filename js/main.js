@@ -123,7 +123,7 @@ function detailsMovie(object) {
   $desciptionText.append($descriptionStars);
 
   var $plotBox = document.createElement('div');
-  $plotBox.setAttribute('class', 'detailed-box text-align-center');
+  $plotBox.setAttribute('class', 'detailed-box-plot text-align-center');
   $detailedText.append($plotBox);
 
   var $descriptionPlot = document.createElement('div');
@@ -145,7 +145,7 @@ function hideList() {
   var $listBox = document.querySelector('.list-box');
   $listBox.className = 'list-box hidden';
   var $details = document.querySelector('.detail-container');
-  $details.setAttribute('class', 'column-full detail-container');
+  $details.setAttribute('class', 'detail-container');
   var $listContainer = document.querySelector('.list-container');
   var $watchList = document.querySelector('.watch-list-container');
   $listContainer.className = 'list-container column-full';
