@@ -14,6 +14,13 @@
 </head>
 
 <body>
+  <div class="offline hidden">
+    <p class="offline-text">Sorry, there was an error connecting to the network! Please check your internet connection and try again.</p>
+    <button class="offline-button">Okay!</button>
+  </div>
+  <div class="spinner hidden">
+    <div class="lds-hourglass"></div>
+  </div>
   <header>
     <div class="column-full header-background">
       <div class="row container baseline">
@@ -64,7 +71,7 @@
       <div class="delete-popup-box">
         <div class="container">
           <div class="delete-popup-text text-align-center">
-            <p>Do you want to delete this movie from your list?</p>
+            <h3>Do you want to delete this movie from your list?</h3>
           </div>
           <div class="delete-buttons">
             <button class="delete-button-style delete-yes">Delete!</button>
@@ -77,5 +84,4 @@
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
-
 </html>

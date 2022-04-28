@@ -1,4 +1,5 @@
 function comingMovie() {
+  viewSpinner();
   var $ul = document.querySelector('.list');
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://imdb-api.com/en/API/ComingSoon/k_4003h2lv');
@@ -9,6 +10,7 @@ function comingMovie() {
       var description = movieDescription(items[i]);
       $ul.append(description);
     }
+    hideSpinner();
   });
   xhr.send();
 }
@@ -38,8 +40,6 @@ function movieDescription(object) {
   $briefCon.append($briefDesc);
 
   var $anchor = document.createElement('a');
-  $anchor.setAttribute('href', '#');
-  $anchor.setAttribute('class', 'brief-text-box');
   $briefDesc.append($anchor);
 
   var $title = document.createElement('p');
@@ -123,7 +123,7 @@ function detailsMovie(object) {
   $desciptionText.append($descriptionStars);
 
   var $plotBox = document.createElement('div');
-  $plotBox.setAttribute('class', 'detailed-box text-align-center');
+  $plotBox.setAttribute('class', 'detailed-box-plot text-align-center');
   $detailedText.append($plotBox);
 
   var $descriptionPlot = document.createElement('div');
@@ -145,7 +145,7 @@ function hideList() {
   var $listBox = document.querySelector('.list-box');
   $listBox.className = 'list-box hidden';
   var $details = document.querySelector('.detail-container');
-  $details.setAttribute('class', 'column-full detail-container');
+  $details.setAttribute('class', 'detail-container');
   var $listContainer = document.querySelector('.list-container');
   var $watchList = document.querySelector('.watch-list-container');
   $listContainer.className = 'list-container column-full';
@@ -169,6 +169,7 @@ var $ul = document.querySelector('.list');
 $ul.addEventListener('click', getDetails);
 
 function getDetails(event) {
+  viewSpinner();
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://imdb-api.com/en/API/ComingSoon/k_4003h2lv');
   xhr.responseType = 'json';
@@ -190,6 +191,7 @@ function getDetails(event) {
         $detailContainer.append(descriptionOfSingleMovie);
       }
     }
+    hideSpinner();
   });
   xhr.send();
 }
@@ -321,5 +323,28 @@ function removeMovie(event) {
     if (data.editing === data.movie[i].id) {
       data.movie.splice(i, 1);
     }
-  } emptyText();
+  }
+  emptyText();
+}
+
+var $offline = document.querySelector('.offline');
+window.addEventListener('offline', function (event) {
+  $offline.className = 'offline';
+});
+
+var $offlineButton = document.querySelector('.offline-button');
+
+$offlineButton.addEventListener('click', closeOfflineDiv);
+
+function closeOfflineDiv(event) {
+  $offline.className = 'offline hidden';
+}
+
+var $spinner = document.querySelector('.spinner');
+
+function viewSpinner() {
+  $spinner.className = 'spinner';
+}
+function hideSpinner() {
+  $spinner.className = 'hidden spinner';
 }

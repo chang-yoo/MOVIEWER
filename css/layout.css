@@ -45,39 +45,60 @@ body {
     font-size: 1.2rem;
   }
 
-  p {
-    font-size: 1.2rem;
-  }
-
   .header-home {
     margin: auto 0;
   }
 
-  @media only screen and (min-width: 600px) and (max-width: 1000px) {
-    li {
-      width: 50%;
-    }
-
-    .column-half {
-      width: 100%;
-    }
-
-    .logo {
-      font-size: 2rem;
-    }
+  .detailed-image-container {
+    width: 100%;
   }
 
-  @media only screen and (min-width: 1000px) {
-    li {
-      width: 25%;
-    }
+  h3,
+  p {
+    font-size: 0.8rem;
+  }
+}
 
-    p {
-      font-size: 0.15rem;
-    }
+@media only screen and (min-width: 600px) and (max-width: 1000px) {
+  li {
+    width: 50%;
+  }
 
-    .column-half {
-      width: 50%;
-    }
+  .column-half {
+    width: 100%;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  .logo {
+    font-size: 2rem;
+  }
+
+  .detailed-image-container {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  li {
+    width: 25%;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  .column-half {
+    width: 50%;
+  }
+
+  .detailed-image-container {
+    width: 40%;
   }
 }
