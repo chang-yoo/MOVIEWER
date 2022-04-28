@@ -322,13 +322,15 @@ function removeMovie(event) {
   } emptyText();
 }
 
-window.addEventListener('load', spinner);
-
-function spinner(event) {
-  var $loading = document.querySelector('.loading');
-  $loading.className = 'loading hidden';
-}
-
+var $offline = document.querySelector('.offline');
 window.addEventListener('offline', function (event) {
-  alert('Sorry, there was an error connecting to the network! Please check your internet connection and try again.');
+  $offline.className = 'offline text-align-center';
 });
+
+var $offlineButton = document.querySelector('.offline-button');
+
+$offlineButton.addEventListener('click', closeOfflineDiv);
+
+function closeOfflineDiv(event) {
+  $offline.className = 'offline hidden';
+}

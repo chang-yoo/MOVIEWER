@@ -301,3 +301,35 @@ p {
     transform: rotate(1800deg);
   }
 }
+
+.offline {
+  position: absolute;
+  width: 60%;
+  background-color: white;
+  height: 200px;
+  border-radius: 5px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.offline-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  height: 100%;
+  width: 80%;
+}
+
+.offline-button {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-70%, 0);
+  border-radius: 8px;
+  border: 1px solid black;
+  color: white;
+  background-color: black;
+}
