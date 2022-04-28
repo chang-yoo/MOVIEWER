@@ -9,7 +9,8 @@ function comingMovie() {
     for (var i = 0; i < items.length; i++) {
       var description = movieDescription(items[i]);
       $ul.append(description);
-    } hideSpinner();
+    }
+    hideSpinner();
   });
   xhr.send();
 }
@@ -189,7 +190,8 @@ function getDetails(event) {
         var $detailContainer = document.querySelector('.detail-container');
         $detailContainer.append(descriptionOfSingleMovie);
       }
-    } hideSpinner();
+    }
+    hideSpinner();
   });
   xhr.send();
 }
@@ -321,7 +323,8 @@ function removeMovie(event) {
     if (data.editing === data.movie[i].id) {
       data.movie.splice(i, 1);
     }
-  } emptyText();
+  }
+  emptyText();
 }
 
 var $offline = document.querySelector('.offline');
