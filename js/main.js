@@ -326,5 +326,5 @@ window.addEventListener('load', spinner);
 
 function spinner(event) {
   var $loading = document.querySelector('.loading');
-  $loading.hide();
+  $loading.className = 'loading hidden';
 }
