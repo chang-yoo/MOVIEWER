@@ -1,4 +1,5 @@
 function comingMovie() {
+  viewSpinner();
   var $ul = document.querySelector('.list');
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://imdb-api.com/en/API/ComingSoon/k_4003h2lv');
@@ -8,7 +9,7 @@ function comingMovie() {
     for (var i = 0; i < items.length; i++) {
       var description = movieDescription(items[i]);
       $ul.append(description);
-    }
+    } hideSpinner();
   });
   xhr.send();
 }
@@ -167,6 +168,7 @@ var $ul = document.querySelector('.list');
 $ul.addEventListener('click', getDetails);
 
 function getDetails(event) {
+  viewSpinner();
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://imdb-api.com/en/API/ComingSoon/k_4003h2lv');
   xhr.responseType = 'json';
@@ -187,7 +189,7 @@ function getDetails(event) {
         var $detailContainer = document.querySelector('.detail-container');
         $detailContainer.append(descriptionOfSingleMovie);
       }
-    }
+    } hideSpinner();
   });
   xhr.send();
 }
@@ -335,8 +337,11 @@ function closeOfflineDiv(event) {
   $offline.className = 'offline hidden';
 }
 
-window.addEventListener('load', spinner);
-function spinner(event) {
-  var $hourglass = document.querySelector('.lds-hourglass');
-  $hourglass.className = 'hidden';
+var $spinner = document.querySelector('.spinner');
+
+function viewSpinner() {
+  $spinner.className = 'spinner';
+}
+function hideSpinner() {
+  $spinner.className = 'hidden spinner';
 }
