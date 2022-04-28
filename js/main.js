@@ -328,3 +328,7 @@ function spinner(event) {
   var $loading = document.querySelector('.loading');
   $loading.className = 'loading hidden';
 }
+
+window.addEventListener('offline', function (event) {
+  alert('Sorry, there was an error connecting to the network! Please check your internet connection and try again.');
+});
