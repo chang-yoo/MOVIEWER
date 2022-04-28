@@ -324,7 +324,7 @@ function removeMovie(event) {
 
 var $offline = document.querySelector('.offline');
 window.addEventListener('offline', function (event) {
-  $offline.className = 'offline text-align-center';
+  $offline.className = 'offline';
 });
 
 var $offlineButton = document.querySelector('.offline-button');
