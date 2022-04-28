@@ -334,3 +334,9 @@ $offlineButton.addEventListener('click', closeOfflineDiv);
 function closeOfflineDiv(event) {
   $offline.className = 'offline hidden';
 }
+
+window.addEventListener('load', spinner);
+function spinner(event) {
+  var $hourglass = document.querySelector('.lds-hourglass');
+  $hourglass.className = 'hidden';
+}
