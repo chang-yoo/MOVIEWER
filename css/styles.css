@@ -333,3 +333,9 @@ p {
   color: white;
   background-color: black;
 }
+
+.logo-image {
+  width: 55px;
+  margin: auto 0;
+  padding: auto 0;
+}
