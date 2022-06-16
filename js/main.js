@@ -54,6 +54,12 @@ function movieDescription(object) {
   $year.textContent = object.year;
   $anchor.append($year);
 
+  var $click = document.createElement('h6');
+  $click.setAttribute('data-id', object.id);
+  $click.setAttribute('class', 'breif-year');
+  $click.textContent = 'click a title for details!';
+  $anchor.append($click);
+
   var $deleteBox = document.createElement('div');
   $deleteBox.setAttribute('class', 'delete-button hidden');
   $briefDesc.append($deleteBox);

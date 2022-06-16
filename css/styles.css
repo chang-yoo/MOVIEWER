@@ -34,13 +34,13 @@ button:hover {
 
 .main-background {
   background-color: #9c4848;
-  min-height: 100vh;
+  min-height: 87.8vh;
   height: 100%;
 }
 
 .detail-background {
   background-color: #9c4848;
-  height: 100%;
+  height: 70vh;
 }
 
 .text-align-center {
@@ -84,10 +84,11 @@ p {
 }
 
 .detailed-image {
-  height: 100%;
+  height: 90%;
   width: 100%;
   border-radius: 10px;
   padding-top: 0.5rem;
+  line-height: 0;
 }
 
 .brief-image {
@@ -97,7 +98,8 @@ p {
 
 .image-container {
   object-fit: cover;
-  height: 400px;
+  height: 100%;
+  line-height: 0;
 }
 
 .detailed-image-container {
@@ -113,13 +115,13 @@ p {
 
 .detailed-box {
   background-color: white;
-  height: 350px;
+  height: 310px;
   border-radius: 5px;
   margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .detailed-box-plot {
@@ -146,7 +148,7 @@ h4 {
 
 .description-box {
   width: 80%;
-  margin: auto;
+  margin: 0 auto;
 }
 
 .adding-btn-popup-container {
