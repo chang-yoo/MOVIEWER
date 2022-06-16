@@ -70,6 +70,10 @@ body {
     display: block;
     text-align: center;
   }
+
+  .add-to-list-width {
+    width: 35%;
+  }
 }
 
 @media only screen and (min-width: 600px) and (max-width: 1000px) {
@@ -96,6 +100,14 @@ body {
   .rows {
     display: flex;
   }
+
+  .add-to-list-width {
+    width: 20%;
+  }
+
+  .watch-list-button {
+    margin-right: 0;
+  }
 }
 
 @media only screen and (min-width: 1000px) {
@@ -121,5 +133,13 @@ body {
 
   .rows {
     display: flex;
+  }
+
+  .add-to-list-width {
+    width: 13%;
+  }
+
+  .watch-list-button {
+    margin-right: 3.3rem;
   }
 }
