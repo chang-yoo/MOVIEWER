@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MOVIEWER</title>
+  <title>moviewer</title>
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
@@ -24,11 +24,15 @@
   </div>
   <header>
     <div class="column-full header-background">
-      <div class="row container baseline">
-        <img class="logo-image" src="favicon_io/apple-touch-icon.png">
-        <h1 class="logo">MOVIEWER</h1>
-        <button class="header-home red-background">HOME</button>
-        <button class="header-home yellow-background">Watch List</button>
+      <div class="rows container baseline">
+        <div class="row">
+          <img class="logo-image" src="favicon_io/apple-touch-icon.png">
+          <h1 class="logo">MOVIEWER</h1>
+        </div>
+        <div class="row">
+          <button class="header-home red-background">HOME</button>
+          <button class="header-home yellow-background">Watch List</button>
+        </div>
       </div>
     </div>
   </header>
@@ -37,7 +41,7 @@
       <div class="container">
         <div class="list-box">
           <div class="list-text text-align-center">
-            <h1>Coming Soon!</h1>
+            <h1 class="bottom-4">Coming Soon!</h1>
           </div>
           <div class="list-container column-full">
             <ul class="row list">
@@ -58,10 +62,10 @@
             </ul>
           </div>
         </div>
-        <div class="column-full detail-container hidden">
-          <a class="add-to-list">
-            <h5>Add To Watch List</h5>
-          </a>
+        <div class="detail-container hidden">
+          <button class="add-to-list watch-list-button add-to-list-width">
+            Add To Watch List
+          </button>
         </div>
       </div>
     </div>

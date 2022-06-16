@@ -33,14 +33,14 @@ button:hover {
 }
 
 .main-background {
-  background-color: #9c4848;
-  min-height: 100vh;
+  background-color: #d9d1d1;
+  min-height: 87.8vh;
   height: 100%;
 }
 
 .detail-background {
-  background-color: #9c4848;
-  height: 100%;
+  background-color: #d9d1d1;
+  height: 70vh;
 }
 
 .text-align-center {
@@ -84,10 +84,11 @@ p {
 }
 
 .detailed-image {
-  height: 100%;
+  height: 90%;
   width: 100%;
   border-radius: 10px;
   padding-top: 0.5rem;
+  line-height: 0;
 }
 
 .brief-image {
@@ -97,7 +98,8 @@ p {
 
 .image-container {
   object-fit: cover;
-  height: 400px;
+  height: 100%;
+  line-height: 0;
 }
 
 .detailed-image-container {
@@ -109,17 +111,26 @@ p {
 .detail-container {
   margin: 0;
   padding-top: 1rem;
+  text-align: right;
 }
 
 .detailed-box {
   background-color: white;
-  height: 350px;
+  height: 310px;
   border-radius: 5px;
   margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+
+.add-to-list {
+  background-color: #d6b258;
+  border: 1px solid #d6b258;
+  height: 2rem;
+  color: white;
+  border-radius: 5px;
 }
 
 .detailed-box-plot {
@@ -138,15 +149,21 @@ h4 {
   color: #6c757d;
   padding: 5rem auto;
   margin: 1rem auto;
+  font-weight: 800;
 }
 
 .detailed-text {
   margin: 1.2rem auto 1rem;
 }
 
+.detailed-description {
+  font-weight: lighter;
+  color: #6c757d;
+}
+
 .description-box {
   width: 80%;
-  margin: auto;
+  margin: 0 auto;
 }
 
 .adding-btn-popup-container {
@@ -198,6 +215,9 @@ h1 {
 
 .brief-container {
   position: relative;
+  z-index: 1;
+  box-shadow: 0 3px 10px 0 rgb(0, 0, 0, 40%);
+  border-radius: 10px;
 }
 
 .delete-button {
@@ -258,6 +278,10 @@ h1 {
   border-radius: 5px;
   font-size: 1.2rem;
   margin: auto;
+}
+
+.brief-title {
+  padding-top: 1rem;
 }
 
 p {

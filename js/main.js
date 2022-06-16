@@ -30,29 +30,34 @@ function movieDescription(object) {
   $briefImg.setAttribute('class', 'image-container');
   $briefCon.appendChild($briefImg);
 
+  var $anchor = document.createElement('a');
+  $anchor.setAttribute('data-id', object.id);
+  $briefImg.append($anchor);
+
   var $img = document.createElement('img');
   $img.setAttribute('src', object.image);
   $img.setAttribute('class', 'brief-image');
-  $briefImg.appendChild($img);
+  $anchor.appendChild($img);
 
   var $briefDesc = document.createElement('div');
   $briefDesc.setAttribute('class', 'brief-description text-align-center');
   $briefCon.append($briefDesc);
 
-  var $anchor = document.createElement('a');
-  $briefDesc.append($anchor);
+  var $anchors = document.createElement('a');
+  $anchors.setAttribute('data-id', object.id);
+  $briefDesc.append($anchors);
 
   var $title = document.createElement('p');
   $title.setAttribute('data-id', object.id);
   $title.setAttribute('class', 'brief-title');
   $title.textContent = object.title;
-  $anchor.append($title);
+  $anchors.append($title);
 
   var $year = document.createElement('h6');
   $year.setAttribute('data-id', object.id);
   $year.setAttribute('class', 'brief-year');
   $year.textContent = object.year;
-  $anchor.append($year);
+  $anchors.append($year);
 
   var $deleteBox = document.createElement('div');
   $deleteBox.setAttribute('class', 'delete-button hidden');
@@ -134,7 +139,8 @@ function detailsMovie(object) {
   $plotText.textContent = 'BRIEF PLOT';
   $descriptionPlot.append($plotText);
 
-  var $plot = document.createElement('h4');
+  var $plot = document.createElement('p');
+  $plot.setAttribute('class', 'detailed-description');
   $plot.textContent = object.plot;
   $descriptionPlot.append($plot);
 
@@ -173,13 +179,11 @@ function getDetails(event) {
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://imdb-api.com/en/API/ComingSoon/k_4003h2lv');
   xhr.responseType = 'json';
-  if (event.target.tagName === 'P') {
-    var text = event.target.closest('p');
+  if (event.target.tagName === 'P' || event.target.tagName === 'H6' || event.target.tagName === 'IMG') {
+    var text = event.target.closest('a');
     var $textIds = text.getAttribute('data-id');
     var stringId = String($textIds);
     hideList();
-  } else {
-    showList();
   }
   xhr.addEventListener('load', function (event) {
     var items = xhr.response.items;
