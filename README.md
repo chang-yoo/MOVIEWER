@@ -32,4 +32,4 @@ Try the application live at [https://chang-yoo.github.io/moviewer/](https://chan
 ## Getting Started
   1. Clone the repository.
     - [git@github.com:chang-yoo/moviewer.git](https://github.com/chang-yoo/moviewer.git)
-  2. Get API key from IMDb API Documentation [https://imdb-api.com/api/#Images-header]([https://imdb-api.com/api/#Images-header)
+  2. Get /API/ComingSoon/{apiKey} from IMDb API Documentation [https://imdb-api.com/api/#Images-header]([https://imdb-api.com/api/#Images-header)
