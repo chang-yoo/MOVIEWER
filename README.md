@@ -4,7 +4,7 @@ A web application for users who want to check out upcoming movies and save to th
 On weekends, I often spend time watching movie reviews on YouTube. However, there are many cases in which the movies I wanted to see were released, however, I tend to forget them over time. This application not only let users know what movies are about to be released, but also let them save to their watch list. Therefore, users are aware of their wanted movies are coming!
 
 ## Live Demo
-Try the application live at [https://chang-yoo.github.io/moviewer/](chang-yoo.github.io/moviewer/)
+Try the application live at [https://chang-yoo.github.io/moviewer/](https://chang-yoo.github.io/moviewer/)
 
 ## Technologies Used
   - HTML
