@@ -1,3 +1,4 @@
+
 function comingMovie() {
   viewSpinner();
   var $ul = document.querySelector('.list');
